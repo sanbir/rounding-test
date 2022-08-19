@@ -16,11 +16,19 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY || "00000000000000000000000000000000
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "rinkeby",
+  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
       chainId: 31337,
-      // gasPrice: 130000000000,
+      blockGasLimit: 20000000,
+      gasPrice: 0,
+      initialBaseFeePerGas: 0,
+      allowUnlimitedContractSize: true,
+      accounts: {
+        mnemonic: 'explain tackle mirror kit van hammer degree position ginger unfair soup bonus',
+        count: 20,
+        accountsBalance: '100000000000000000000000',
+      }
     },
     rinkeby: {
         url: RINKEBY_RPC_URL,
@@ -35,6 +43,9 @@ const config: HardhatUserConfig = {
       },
       {
         version: "0.6.6",
+      },
+      {
+        version: "0.4.24",
       },
     ],
   },

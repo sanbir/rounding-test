@@ -11,8 +11,11 @@ async function main() {
   const testContract = await factory.deploy()
 
   try {
-    const transactionResponse = await testContract.getPooledEthByShares({gasLimit: 200000})
-    await transactionResponse.wait(1)
+      const amount = ethers.utils.parseEther('10')
+      const result = await testContract.getPooledEthByShares(amount, {gasLimit: 200000})
+      const result2 = await testContract.getSharesByPooledEth(result, {gasLimit: 200000})
+      console.log(amount.toString())
+      console.log(result2.toString())
   } catch (err: any) {
       console.log(err)
   }
