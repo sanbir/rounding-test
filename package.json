@@ -24,6 +24,8 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
+    "RoundingTest": "hardhat run ./scripts/RoundingTest.ts",
+    "RoundingTestGeneral": "hardhat run ./scripts/RoundingTestGeneral.ts",
     "test": "hardhat test",
     "lint": "solhint 'contracts/*.sol'",
     "lint:fix": "solhint 'contracts/**/*.sol' --fix",

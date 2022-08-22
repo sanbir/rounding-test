@@ -1,6 +1,5 @@
-import { Signer } from "ethers"
-import { ethers, getNamedAccounts, deployments } from "hardhat"
-import {RoundingTest__factory} from '../typechain-types/factories/RoundingTest__factory'
+import { ethers, getNamedAccounts } from "hardhat"
+import {RoundingTest__factory} from '../typechain-types'
 
 async function main() {
   const { deployer } = await getNamedAccounts()
@@ -12,8 +11,8 @@ async function main() {
 
   try {
       const amount = ethers.utils.parseEther('10')
-      const result = await testContract.getPooledEthByShares(amount, {gasLimit: 200000})
-      const result2 = await testContract.getSharesByPooledEth(result, {gasLimit: 200000})
+      const result = await testContract.getSharesByPooledEth(amount, {gasLimit: 200000})
+      const result2 = await testContract.getPooledEthByShares(result, {gasLimit: 200000})
       console.log(amount.toString())
       console.log(result2.toString())
   } catch (err: any) {
