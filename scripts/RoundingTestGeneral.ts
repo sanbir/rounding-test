@@ -10,9 +10,9 @@ async function main() {
   const testContract = await factory.deploy()
 
   try {
-      const a = ethers.utils.parseEther('10')
-      const b = ethers.BigNumber.from("4280329281118175371113977")
-      const c = ethers.BigNumber.from("3954885183194715680671922")
+      const a = ethers.utils.parseEther('1000')
+      const b = ethers.BigNumber.from("3954885183194715680671922")
+      const c = ethers.BigNumber.from("42803292811181753711139770")
 
       const d = await testContract.getD(a, b, c, {gasLimit: 200000})
       const a1 = await testContract.getA(d, c, b, {gasLimit: 200000})
