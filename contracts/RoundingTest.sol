@@ -5,8 +5,10 @@ import "./SafeMath.sol";
 contract RoundingTest {
     using SafeMath for uint256;
 
-    uint256 totalShares = 3954885183194715680671922;
-    uint256 totalPooledEther = 4280329281118175371113977;
+    uint256 totalShares = 1831;
+    uint256 totalPooledEther = 2163;
+
+    uint256 MULTIPLIER = 2;
 
     function getPooledEthByShares(uint256 _sharesAmount) public view returns (uint256) {
         if (totalShares == 0) {
@@ -14,7 +16,8 @@ contract RoundingTest {
         } else {
             return _sharesAmount
             .mul(totalPooledEther)
-            .div(totalShares);
+            .div(totalShares)
+            .div(MULTIPLIER);
         }
     }
 
@@ -24,6 +27,7 @@ contract RoundingTest {
         } else {
             return _ethAmount
             .mul(totalShares)
+            .mul(MULTIPLIER)
             .div(totalPooledEther);
         }
     }

@@ -15,6 +15,13 @@ async function main() {
       const result2 = await testContract.getPooledEthByShares(result, {gasLimit: 200000})
       console.log(amount.toString())
       console.log(result2.toString())
+
+
+
+      const result3 = await testContract.getPooledEthByShares(amount, {gasLimit: 200000})
+      const result4 = await testContract.getSharesByPooledEth(result3, {gasLimit: 200000})
+      console.log(amount.toString())
+      console.log(result4.toString())
   } catch (err: any) {
       console.log(err)
   }
